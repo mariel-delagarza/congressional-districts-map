@@ -1,3 +1,5 @@
+import { renderSidebar } from "./renderSidebar.js";
+
 const map = new maplibregl.Map({
   container: "map",
   style: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
@@ -74,18 +76,7 @@ map.on("load", () => {
 
       console.log("Clicked feature:", feature);
       const props = feature.properties;
-      const district = props.NAMELSAD || `District ${props.CD119FP}`;
-      const name = props.fullName || "Unknown";
-      const party = props.PARTY || "—";
-      const vote = props.VOTE || "—";
-      const impact = props.IMPACT || "—";
-
-      document.getElementById("district-name").textContent = district;
-      document.getElementById("rep-info").innerHTML = `
-        <p><strong>${name}</strong> (${party})</p>
-        <p><strong>Vote:</strong> ${vote}</p>
-        <p><strong>Impact:</strong> ${impact}</p>
-      `;
+      renderSidebar(props);
     });
 
     map.on("mouseenter", "districts-fill", () => {
