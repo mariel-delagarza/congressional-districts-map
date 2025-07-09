@@ -5,25 +5,24 @@ const map = new maplibregl.Map({
   zoom: 3,
 });
 
-let tooltipInstance; // reference to the active Tippy tooltip
-
 map.on("load", () => {
   const sheetURL =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFgq1MCT6dByjhWn0SjcnjgdHfCDGUQVylEvfy3DVlrWfbnvRS_48gEz2J8t6Z3HYaTj-tEBKO7W8G/pub?gid=1195194271&single=true&output=csv";
 
   Promise.all([
-    d3.json("data/congressional_districts_119.geojson"),
+    d3.json("data/congressional_districts_cleaned.geojson"),
     d3.csv(sheetURL),
   ]).then(([geojson, csv]) => {
-    // build a lookup table from OBJECTID
+    // Build CSV lookup
     const csvById = Object.fromEntries(
       csv.map((d) => {
         const prefix = d.PREFIX?.trim() || "";
         const first = d.FIRSTNAME?.trim() || "";
         const middle = d.MIDDLENAME?.trim() || "";
         const last = d.LASTNAME?.trim() || "";
+        const suffix = d.SUFFIX?.trim() || "";
 
-        const fullName = [prefix, first, middle, last]
+        const fullName = [prefix, first, middle, last, suffix]
           .filter((part) => part.length)
           .join(" ");
 
@@ -31,7 +30,7 @@ map.on("load", () => {
       })
     );
 
-    // merge CSV data into each GeoJSON feature
+    // Enrich GeoJSON with sheet data
     geojson.features.forEach((feature) => {
       const id = feature.properties.OBJECTID;
       if (csvById[id]) {
@@ -42,88 +41,58 @@ map.on("load", () => {
       }
     });
 
-    // Wait until the source is fully loaded before replacing its data
-    if (map.getSource("districts")) {
-      map.getSource("districts").setData(geojson);
-    } else {
-      map.once("sourcedata", (e) => {
-        if (e.sourceId === "districts" && map.getSource("districts")) {
-          map.getSource("districts").setData(geojson);
-        }
-      });
-    }
-  });
-
-  map.addSource("districts", {
-    type: "geojson",
-    data: "data/congressional_districts_119.geojson",
-  });
-
-  map.addLayer({
-    id: "districts-fill",
-    type: "fill",
-    source: "districts",
-    paint: {
-      "fill-color": "#1d4ed8",
-      "fill-opacity": 0.3,
-    },
-  });
-
-  map.addLayer({
-    id: "districts-outline",
-    type: "line",
-    source: "districts",
-    paint: {
-      "line-color": "#1d4ed8",
-      "line-width": 1,
-    },
-  });
-
-  map.on("mousemove", "districts-fill", (e) => {
-    map.getCanvas().style.cursor = "pointer";
-
-    const feature = e.features?.[0];
-    if (!feature) return;
-
-    const name = feature.properties.fullName || "Unknown";
-    const district = feature.properties.NAMELSAD || "District";
-
-    const content = `<strong>${district}</strong><br>${name}`;
-
-    // Remove any existing tooltip
-    if (tooltipInstance) tooltipInstance.destroy();
-
-    // Virtual element at mouse position
-    const virtualElement = {
-      getBoundingClientRect: () => ({
-        width: 0,
-        height: 0,
-        top: e.originalEvent.clientY,
-        left: e.originalEvent.clientX,
-        right: e.originalEvent.clientX,
-        bottom: e.originalEvent.clientY,
-      }),
-    };
-
-    tooltipInstance = tippy(document.body, {
-      content,
-      allowHTML: true,
-      placement: "right",
-      trigger: "manual",
-      hideOnClick: false,
-      interactive: false,
-      theme: "light-border",
-      getReferenceClientRect: virtualElement.getBoundingClientRect,
+    // Add source and data
+    map.addSource("districts", {
+      type: "geojson",
+      data: geojson,
     });
 
-    tooltipInstance.show();
-  });
+    map.addLayer({
+      id: "districts-fill",
+      type: "fill",
+      source: "districts",
+      paint: {
+        "fill-color": "#1d4ed8",
+        "fill-opacity": 0.3,
+      },
+    });
 
-  map.on("mouseleave", "districts-fill", () => {
-    map.getCanvas().style.cursor = "";
-    if (tooltipInstance) {
-      tooltipInstance.destroy();
-      tooltipInstance = null;
-    }
+    map.addLayer({
+      id: "districts-outline",
+      type: "line",
+      source: "districts",
+      paint: {
+        "line-color": "#1d4ed8",
+        "line-width": 1,
+      },
+    });
+
+    // Click handler to update sidebar
+    map.on("click", "districts-fill", (e) => {
+      const feature = e.features?.[0];
+      if (!feature) return;
+
+      const props = feature.properties;
+      const district = props.NAMELSAD || `District ${props.CD119FP}`;
+      const name = props.fullName || "Unknown";
+      const party = props.PARTY || "—";
+      const vote = props.VOTE || "—";
+      const impact = props.IMPACT || "—";
+
+      document.getElementById("district-name").textContent = district;
+      document.getElementById("rep-info").innerHTML = `
+        <p><strong>${name}</strong> (${party})</p>
+        <p><strong>Vote:</strong> ${vote}</p>
+        <p><strong>Impact:</strong> ${impact}</p>
+      `;
+    });
+
+    map.on("mouseenter", "districts-fill", () => {
+      map.getCanvas().style.cursor = "pointer";
+    });
+
+    map.on("mouseleave", "districts-fill", () => {
+      map.getCanvas().style.cursor = "";
+    });
   });
 });
