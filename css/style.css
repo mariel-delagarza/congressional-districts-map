@@ -1,0 +1,9 @@
+.tippy-box[data-theme~="light-border"] {
+  background-color: white;
+  color: #111;
+  border: 1px solid #ccc;
+  font-family: sans-serif;
+  font-size: 14px;
+  padding: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

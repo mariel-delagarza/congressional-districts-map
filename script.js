@@ -107,6 +107,7 @@ map.on("load", () => {
 
     tooltipInstance = tippy(document.body, {
       content,
+      allowHTML: true,
       placement: "right",
       trigger: "manual",
       hideOnClick: false,
