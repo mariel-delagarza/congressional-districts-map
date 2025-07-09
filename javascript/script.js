@@ -17,7 +17,13 @@ map.on("load", () => {
     d3.json("data/congressional_districts_cleaned.json"),
     d3.csv(sheetURL),
   ]).then(([topology, csv]) => {
-    const geojson = topojson.feature(topology, topology.objects[Object.keys(topology.objects)[0]]);
+    console.time("TopoJSON conversion");
+    const geojson = topojson.feature(
+      topology,
+      topology.objects[Object.keys(topology.objects)[0]]
+    );
+    console.timeEnd("TopoJSON conversion");
+
     // Store the spreadsheet data in memory
     csvById = Object.fromEntries(
       csv.map((d) => {
@@ -35,12 +41,15 @@ map.on("load", () => {
       })
     );
 
-    // Add the source and render the map immediately
+    // Add the GeoJSON source
+    console.time("Add source");
     map.addSource("districts", {
       type: "geojson",
       data: geojson,
     });
+    console.timeEnd("Add source");
 
+    // Add layers
     map.addLayer({
       id: "districts-fill",
       type: "fill",
@@ -61,7 +70,17 @@ map.on("load", () => {
       },
     });
 
-    // Click handler — now looks up props from csvById, not GeoJSON
+    // Remove the loading overlay when the map is fully rendered
+    map.once("idle", () => {
+      console.log("Map fully rendered");
+      const overlay = document.getElementById("loading-overlay");
+      if (overlay) {
+        overlay.classList.add("hidden");
+        setTimeout(() => overlay.remove(), 300);
+      }
+    });
+
+    // Click handler
     map.on("click", "districts-fill", (e) => {
       const feature = e.features?.[0];
       if (!feature) return;
