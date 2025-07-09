@@ -72,6 +72,7 @@ map.on("load", () => {
       const feature = e.features?.[0];
       if (!feature) return;
 
+      console.log("Clicked feature:", feature);
       const props = feature.properties;
       const district = props.NAMELSAD || `District ${props.CD119FP}`;
       const name = props.fullName || "Unknown";
