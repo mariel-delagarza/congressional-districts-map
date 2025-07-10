@@ -143,7 +143,17 @@ map.on("load", () => {
         "text-field": ["get", "label"],
         // "text-font": ["Open Sans Bold", "Arial Unicode MS Regular"],
         "text-font": ["Roboto Regular"],
-        "text-size": 10,
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          3,
+          10, // at zoom 3 → 10px
+          5,
+          14, // at zoom 5 → 14px
+          7,
+          18, // at zoom 7 → 18px
+        ],
         "text-anchor": "center",
         "text-allow-overlap": false, // Prevent overlap
         "text-ignore-placement": false, // Allow skipping if no space
