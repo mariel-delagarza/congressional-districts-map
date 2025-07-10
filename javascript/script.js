@@ -7,6 +7,13 @@ const map = new maplibregl.Map({
   zoom: 3,
 });
 
+const partyColorMap = {
+  D: "#2563eb", // blue-600
+  R: "#dc2626", // red-600
+  I: "#a855f7", // purple-ish for Independent
+  "": "#9ca3af", // gray for unknown
+};
+
 let csvById = {}; // Store spreadsheet data by OBJECTID
 
 map.on("load", () => {
@@ -41,6 +48,13 @@ map.on("load", () => {
       })
     );
 
+    // ✅ Now that csvById is built, inject PARTY into GeoJSON
+    geojson.features.forEach((feature) => {
+      const id = feature.properties.OBJECTID;
+      const party = csvById[id]?.PARTY || "";
+      feature.properties.PARTY = party;
+    });
+    
     // Add the GeoJSON source
     console.time("Add source");
     map.addSource("districts", {
@@ -55,8 +69,18 @@ map.on("load", () => {
       type: "fill",
       source: "districts",
       paint: {
-        "fill-color": "#1d4ed8",
-        "fill-opacity": 0.3,
+        "fill-color": [
+          "match",
+          ["get", "PARTY"],
+          "D",
+          partyColorMap.D,
+          "R",
+          partyColorMap.R,
+          "I",
+          partyColorMap.I,
+          partyColorMap[""], // fallback
+        ],
+        "fill-opacity": 0.5,
       },
     });
 

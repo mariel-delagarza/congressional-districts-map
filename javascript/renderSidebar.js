@@ -20,7 +20,8 @@ export function renderSidebar(props) {
       <ul>
         <li>Phone: (202) 22${phone}</li>
         <li><a href=${props.CONTACTFORMURL} target="_blank">Contact Form</a></li>
-
+        <li><a href=${props.FACEBOOK_URL} target="_blank">Facebook</a></li>
+        <li><a href=${props.TWITTER_URL} target="_blank">Twitter</a></li>
       </ul>
     </div>
   `;
