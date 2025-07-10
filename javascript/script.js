@@ -125,16 +125,20 @@ map.on("load", () => {
 
     // Add a layer for district labels
     map.addLayer({
-      id: "district-labels",
+      id: "district-labels-zoomed-out",
       type: "symbol",
       source: "district-labels",
-      minzoom: 5, // Only show labels at zoom level 5 and above
+      minzoom: 3,
+      maxzoom: 5,
       layout: {
         "text-field": ["get", "label"],
         "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-        "text-size": 12,
-        "text-offset": [0, 0.6],
-        "text-anchor": "top",
+        "text-size": 10,
+        "text-anchor": "center",
+        "text-allow-overlap": false, // Prevent overlap
+        "text-ignore-placement": false, // Allow skipping if no space
+        "symbol-placement": "point", // Place label at geometry point
+        "symbol-avoid-edges": true, // Avoid placing labels near map edge
       },
       paint: {
         "text-color": "#000",
@@ -161,6 +165,10 @@ map.on("load", () => {
         overlay.classList.add("hidden");
         setTimeout(() => overlay.remove(), 300);
       }
+    });
+
+    map.on("zoom", () => {
+      console.log("Current zoom level:", map.getZoom());
     });
 
     // Click handler - when a district is clicked, update the sidebar with representative info
