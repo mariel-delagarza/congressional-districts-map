@@ -4,7 +4,10 @@ export function renderSidebar(props) {
   const phone = props.PHONE
     ? `${props.PHONE.slice(0, 1)}-${props.PHONE.slice(1)}`
     : "—";
-  const district = props.STATE + "-" + props.DISTRICT;
+  const district =
+    props.DISTRICT === "0"
+      ? `${props.STATE_FULL}, At-Large`
+      : `${props.STATE_FULL}, District ${parseInt(props.DISTRICT, 10)}`;
 
   // 🧩 Helper to create a link item if a value exists
   const linkItem = (url, label, isPhone = false) =>
@@ -24,9 +27,8 @@ export function renderSidebar(props) {
     linkItem(props.YOUTUBE_URL, "YouTube"),
     linkItem(props.INSTAGRAM_URL, "Instagram"),
   ];
-  document.getElementById(
-    "district-name"
-  ).textContent = `District: ${district}`;
+
+  document.getElementById("district-name").textContent = `${district}`;
   document.getElementById("rep-info").innerHTML = `
     <div class="rep-header">
       <a class="rep-name" href="${
