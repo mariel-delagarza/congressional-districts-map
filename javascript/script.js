@@ -27,7 +27,7 @@ map.on("load", () => {
     // Load TopoJSON file containing congressional districts
     d3.json("data/congressional_districts_cleaned.json"),
 
-    // Load the Google Sheets CSV data 
+    // Load the Google Sheets CSV data
     d3.csv(sheetURL),
   ]).then(([topology, csv]) => {
     // Convert TopoJSON to GeoJSON
@@ -57,6 +57,31 @@ map.on("load", () => {
       })
     );
 
+    // Create GeoJSON features for district labels
+    const labelFeatures = csv
+      .filter((d) => d.INTPTLAT && d.INTPTLON && d.STATE && d.DISTRICT)
+      .map((d) => {
+        const coordinates = [parseFloat(d.INTPTLON), parseFloat(d.INTPTLAT)];
+        const label = `${d.STATE}-${d.DISTRICT}`;
+
+        return {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates,
+          },
+          properties: {
+            OBJECTID: d.OBJECTID,
+            label,
+          },
+        };
+      });
+
+    const labelGeoJSON = {
+      type: "FeatureCollection",
+      features: labelFeatures,
+    };
+
     // Inject PARTY into GeoJSON - mapLibre can only style features based on properties directly inside each feature
     geojson.features.forEach((feature) => {
       const id = feature.properties.OBJECTID;
@@ -68,6 +93,11 @@ map.on("load", () => {
     map.addSource("districts", {
       type: "geojson",
       data: geojson,
+    });
+
+    map.addSource("district-labels", {
+      type: "geojson",
+      data: labelGeoJSON,
     });
 
     /* --------------------- Add Layers --------------------- */
@@ -93,6 +123,25 @@ map.on("load", () => {
       },
     });
 
+    // Add a layer for district labels
+    map.addLayer({
+      id: "district-labels",
+      type: "symbol",
+      source: "district-labels",
+      minzoom: 5, // Only show labels at zoom level 5 and above
+      layout: {
+        "text-field": ["get", "label"],
+        "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
+        "text-size": 12,
+        "text-offset": [0, 0.6],
+        "text-anchor": "top",
+      },
+      paint: {
+        "text-color": "#000",
+      },
+    });
+
+    // Add an outline layer for the districts
     map.addLayer({
       id: "districts-outline",
       type: "line",
@@ -102,6 +151,8 @@ map.on("load", () => {
         "line-width": 0.5,
       },
     });
+
+    /* ---------------------- Behavior ---------------------- */
 
     // Remove the loading overlay (in HTML) when the map is fully rendered
     map.once("idle", () => {
