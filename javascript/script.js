@@ -123,28 +123,6 @@ map.on("load", () => {
       },
     });
 
-    // Add a layer for district labels
-    map.addLayer({
-      id: "district-labels-zoomed-out",
-      type: "symbol",
-      source: "district-labels",
-      minzoom: 3,
-      maxzoom: 5,
-      layout: {
-        "text-field": ["get", "label"],
-        "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-        "text-size": 10,
-        "text-anchor": "center",
-        "text-allow-overlap": false, // Prevent overlap
-        "text-ignore-placement": false, // Allow skipping if no space
-        "symbol-placement": "point", // Place label at geometry point
-        "symbol-avoid-edges": true, // Avoid placing labels near map edge
-      },
-      paint: {
-        "text-color": "#000",
-      },
-    });
-
     // Add an outline layer for the districts
     map.addLayer({
       id: "districts-outline",
@@ -153,6 +131,30 @@ map.on("load", () => {
       paint: {
         "line-color": "#f2f2f2", // light gray for outline
         "line-width": 0.5,
+      },
+    });
+
+    // Add a layer for district labels
+    map.addLayer({
+      id: "district-labels-zoomed-out",
+      type: "symbol",
+      source: "district-labels",
+      layout: {
+        "text-field": ["get", "label"],
+        // "text-font": ["Open Sans Bold", "Arial Unicode MS Regular"],
+        "text-font": ["Roboto Regular"],
+        "text-size": 10,
+        "text-anchor": "center",
+        "text-allow-overlap": false, // Prevent overlap
+        "text-ignore-placement": false, // Allow skipping if no space
+        "symbol-placement": "point", // Place label at geometry point
+        "symbol-avoid-edges": true, // Avoid placing labels near map edge
+      },
+      paint: {
+        "text-color": "#111",
+        "text-halo-color": "white",
+        "text-halo-width": 0.1,
+        "text-halo-blur": 0.5,
       },
     });
 
