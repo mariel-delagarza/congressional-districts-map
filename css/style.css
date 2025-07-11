@@ -135,6 +135,13 @@ body {
   font-weight: 500;
 }
 
+#ancestry {
+  font-size: 1rem;
+  /* text-transform: uppercase; */
+  color: #333; /* Tailwind gray-500-ish */
+  padding-top: 0.5rem;
+  font-weight: 700;
+}
 .rep-name {
   font-size: 1.25rem;
   font-weight: 700;
