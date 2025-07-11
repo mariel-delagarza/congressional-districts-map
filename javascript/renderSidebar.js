@@ -59,8 +59,14 @@ export function renderSidebar(props) {
   });
 
   // Rep name
-  const header = document.querySelector(".rep-header");
-  header.innerHTML = `<a class="rep-name" href="${props.WEBSITEURL}" target="_blank">${name} (${party})</a>`;
+  const photo = document.getElementById("rep-photo");
+  const repName = document.querySelector(".rep-name");
+
+  photo.src = props.PHOTOURL || "";
+  photo.alt = `Photo of ${name}`;
+
+  repName.href = props.WEBSITEURL || "#";
+  repName.textContent = `${name} (${party})`;
 
   // Show the sidebar content
   document.getElementById("rep-details").style.display = "block";
