@@ -19,10 +19,14 @@ export function renderSidebar(props) {
       ? `${props.STATE_FULL}, At-Large`
       : `${props.STATE_FULL}, District ${parseInt(props.DISTRICT, 10)}`;
 
+  document.getElementById("total-population").textContent = props["Total population"] + "*" || "—";
+  
   /* ------------------------ Bars ------------------------ */
   const barDefs = [
     { key: "17 and under", id: "under-17", color: "#60a5fa" },
     { key: "65 and over", id: "over-65", color: "#f472b6" },
+    { key: "White", id: "white", color: "#38bdf8" },
+    { key: "Black", id: "black", color: "#f59e0b" },
     { key: "Poverty Rate", id: "poverty", color: "#38bdf8" },
     { key: "Aged 25+ without HS diploma", id: "no-hs", color: "#6366f1" },
   ];
@@ -96,6 +100,7 @@ export function renderSidebar(props) {
       socialContainer.appendChild(a);
     }
   });
+
   /* ---- Show sidebar details after click on district ---- */
   document.getElementById("rep-details").style.display = "block";
   document.getElementById("rep-instructions").style.display = "none";

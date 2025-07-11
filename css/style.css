@@ -68,6 +68,10 @@ body {
   pointer-events: none;
 }
 
+#demographic-bars {
+  margin: 1.125rem 0;
+}
+
 .bar-row {
   display: flex;
   align-items: center;

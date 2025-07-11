@@ -35,7 +35,8 @@
                     >Official website</a
                   >
                   <a id="rep-contact-form" href="#" target="_blank"
-                    >Contact form</a>
+                    >Contact form</a
+                  >
                 </div>
 
                 <div class="rep-socials"></div>
@@ -46,7 +47,9 @@
               <!-- <ul id="contact-links"></ul> -->
 
               <h3>Demographic Snapshot</h3>
+              <p>Total Population: <span id="total-population"></span></p>
               <div id="demographic-bars">
+                <h4>Who lives here?</h4>
                 <div class="bar-row" id="row-under-17">
                   <span class="label">17 and Under</span>
                   <span class="value" id="value-under-17"></span>
@@ -61,6 +64,21 @@
                     <div class="bar" id="bar-over-65"></div>
                   </div>
                 </div>
+                <div class="bar-row" id="row-white">
+                  <span class="label">White</span>
+                  <span class="value" id="value-white"></span>
+                  <div class="bar-container">
+                    <div class="bar" id="bar-white"></div>
+                  </div>
+                </div>
+                <div class="bar-row" id="row-black">
+                  <span class="label">Black</span>
+                  <span class="value" id="value-black"></span>
+                  <div class="bar-container">
+                    <div class="bar" id="bar-black"></div>
+                  </div>
+                </div>
+
                 <div class="bar-row" id="row-poverty">
                   <span class="label">Below Poverty</span>
                   <span class="value" id="value-poverty"></span>
@@ -76,13 +94,97 @@
                   </div>
                 </div>
               </div>
+              <!--end #demographic-bars -->
+              <details>
+                <summary>Get the Data</summary>
+                <p>
+                  The complete data can be found at the Census Bureau's website
+                  <a href="https://www.census.gov/mycd/"
+                    >"My Congressional District"</a
+                  >. If you click on a state and a district, you will see the
+                  complete information for that district. At the bottom, you
+                  will see a share icon and the text "Download and Share".
+                  Clicking on this provides the option to download the
+                  information for only that district or for all districts in the
+                  state.
+                </p>
+              </details>
+              <details>
+                <summary>Population Details</summary>
+                <p>
+                  The U.S. Census Bureau provides several population totals to
+                  use when analyzing this demographic data. One is the absolute
+                  total population, which is provided above as "Total
+                  Population". The others include: total civilian
+                  noninstitutionalized population, total housing units, total
+                  households, and the population aged 25 years or older.
+                </p>
+                <ul>
+                  <li>
+                    <strong
+                      >Total Civilian Noninstitutionalized Population:</strong
+                    >
+                    <p>
+                      The civilian noninstutitional population is defined as,
+                      "People ages 15 or 16 and older residing in the 50 states
+                      and the District of columbia who do not live in
+                      institutions and who are not on Active Duty in the Armed
+                      Forces." (<a href="https://www.bls.gov/bls/glossary.htm#C"
+                        >BLS glossary</a
+                      >)
+                    </p>
+                    <p>
+                      Institutions include "adult correctional facilities,
+                      juvenile facilities, skilled-nursing facilities, and other
+                      institutional facilities such as mental (psychiatric)
+                      hospitals and in-patient hospice facilities." (<a
+                        href="https://www.census.gov/glossary/?term=Institutionalized+population"
+                        >Census Bureau Glossary</a
+                      >)
+                    </p>
+                    <p>
+                      This number is used to calculate the percentage of people
+                      with disabilities and the percentage of people with health
+                      insurance.
+                    </p>
+                  </li>
+                  <li>
+                    <strong>Total Households:</strong>
+                    <p>
+                      This value is used when analyzing population income
+                      levels. A "household" is defined as "all the people who
+                      occupy a housing unit (such as a house or apartment) as
+                      their usual place of residence". (<a
+                        href="https://www.census.gov/glossary/?term=Household"
+                        >Census Bureau Glossary</a
+                      >)
+                    </p>
+                  </li>
+                  <li>
+                    <strong>Population Aged 25 Years or Older:</strong>
+                    <p>
+                      For demographic data involving education levels, the
+                      Census Bureau provides the population aged 25 years or
+                      older.
+                    </p>
+                  </li>
+                </ul>
+                <p>
+                  The Census Bureau instructs that: "If calculating a
+                  percentage, use the total population line within the section
+                  as the denominator. Do not use total population lines from
+                  other sections since these may have different universes."
+                </p>
+                <p>
+                  The percentages shown in the bar charts were calculated in
+                  accordance with this instruction.
+                </p>
+              </details>
             </div>
+            <!--end .rep-details-content  -->
           </div>
-          <!-- end #rep-details -->
         </div>
-        <!-- end #rep-info -->
       </div>
-      <!-- end #info-panel -->
     </div>
 
     <script src="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>
