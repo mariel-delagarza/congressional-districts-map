@@ -105,45 +105,35 @@ body {
 
 
 #rep-photo {
-    background-color: red;
-    display: inline-block;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    text-align: center;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .rep-header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-#rep-photo {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.rep-text {
+.rep-info-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.rep-title {
-  font-size: 0.75rem;
+#district-name {
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #6b7280; /* Tailwind gray-500 */
+  color: #6b7280; /* Tailwind gray-500-ish */
   font-weight: 500;
 }
 
 .rep-name {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937; /* Tailwind gray-800 */
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937; /* Tailwind gray-800-ish */
   text-decoration: none;
 }
