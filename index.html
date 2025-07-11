@@ -18,10 +18,59 @@
       </div>
       <div id="info-panel">
         <h2 id="district-name">Select a district</h2>
+
         <div id="rep-info">
-          <p>Click on any district to view its representative and impact.</p>
-        </div>
-      </div>
+          <p id="rep-instructions">
+            Click on any district to view its representative and impact.
+          </p>
+
+          <div id="rep-details" style="display: none;">
+            <div class="rep-header">
+              <a class="rep-name" href="#" target="_blank">Name (Party)</a>
+            </div>
+
+            <div class="rep-details-content">
+              <p>
+                Want to let your representative know how you feel? Here's how to
+                reach them. Links will open in a new tab:
+              </p>
+              <ul id="contact-links"></ul>
+
+              <h3>Demographic Snapshot</h3>
+              <div id="demographic-bars">
+                <div class="bar-row" id="row-under-17">
+                  <span class="label">17 and Under</span>
+                  <span class="value" id="value-under-17"></span>
+                  <div class="bar-container">
+                    <div class="bar" id="bar-under-17"></div>
+                  </div>
+                </div>
+                <div class="bar-row" id="row-over-65">
+                  <span class="label">65 and Over</span>
+                  <span class="value" id="value-over-65"></span>
+                  <div class="bar-container">
+                    <div class="bar" id="bar-over-65"></div>
+                  </div>
+                </div>
+                <div class="bar-row" id="row-poverty">
+                  <span class="label">Below Poverty</span>
+                  <span class="value" id="value-poverty"></span>
+                  <div class="bar-container">
+                    <div class="bar" id="bar-poverty"></div>
+                  </div>
+                </div>
+                <div class="bar-row" id="row-no-hs">
+                  <span class="label">No High School Diploma</span>
+                  <span class="value" id="value-no-hs"></span>
+                  <div class="bar-container">
+                    <div class="bar" id="bar-no-hs"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- end #rep-details -->
+        </div> <!-- end #rep-info -->
+      </div> <!-- end #info-panel -->
     </div>
 
     <script src="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>
