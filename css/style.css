@@ -155,3 +155,20 @@ body {
 .rep-socials a:hover {
   color: #1f2937; /* Tailwind gray-800 */
 }
+
+.rep-contact-links {
+  margin: 0.25rem 0;
+  display: flex;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.rep-contact-links a {
+  color: #3b82f6; /* Tailwind "blue-500" – same family as your bars */
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.rep-contact-links a:hover {
+  text-decoration: underline;
+}
