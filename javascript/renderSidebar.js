@@ -1,3 +1,17 @@
+// 🧩 Helper to create a bar row
+const createBarRow = (label, value, color) => {
+  const row = document.createElement("div");
+  row.className = "bar-row";
+  row.innerHTML = `
+      <span class="label">${label}</span>
+      <span class="value">${value.toFixed(1)}%</span>
+      <div class="bar-container">
+        <div class="bar" style="background-color: ${color}; width: 0;"></div>
+      </div>
+    `;
+  return { row, value };
+};
+
 export function renderSidebar(props) {
   const name = props.fullName || "Unknown";
   const party = props.PARTY || "—";
@@ -40,6 +54,35 @@ export function renderSidebar(props) {
       <ul>
         ${contactLinks.join("")}
       </ul>
+      <h3>Demographic Snapshot</h3>
     </div>
   `;
+  const container = document.querySelector(".rep-details");
+
+  const barData = [
+    { label: "17 and Under", key: "17 and under", color: "#60a5fa" },
+    { label: "65 and Over", key: "65 and over", color: "#f472b6" },
+    { label: "Below Poverty", key: "Poverty Rate", color: "#38bdf8" },
+    {
+      label: "No High School Diploma",
+      key: "Aged 25+ without HS diploma",
+      color: "#6366f1",
+    },
+    // Add more here as needed
+  ];
+
+  barData.forEach(({ label, key, color }) => {
+  const value = parseFloat(props[key]);
+  if (!isNaN(value)) {
+    const { row, value: percent } = createBarRow(label, value, color);
+    container.appendChild(row);
+
+    const barEl = row.querySelector(".bar");
+    const prevWidth = barEl.style.width || "0%";
+    barEl.style.width = prevWidth;
+    void barEl.offsetWidth; // force reflow
+    barEl.style.width = `${percent}%`;
+  }
+});
+
 }
