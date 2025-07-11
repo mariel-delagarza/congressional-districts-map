@@ -27,6 +27,7 @@ export function renderSidebar(props) {
     { key: "65 and over", id: "over-65", color: "#f472b6" },
     { key: "White", id: "white", color: "#38bdf8" },
     { key: "Black", id: "black", color: "#f59e0b" },
+    { key: "Hispanic", id: "hispanic", color: "#f472b6" },
     { key: "Poverty Rate", id: "poverty", color: "#38bdf8" },
     { key: "Aged 25+ without HS diploma", id: "no-hs", color: "#6366f1" },
   ];
