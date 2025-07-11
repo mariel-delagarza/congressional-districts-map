@@ -19,7 +19,7 @@ body {
 }
 
 #info-panel {
-  width: 500px;
+  width: 550px;
   padding: 1.5rem;
   background: #fff;
   border-right: 1px solid #ccc; /* switch from left to right border */
@@ -81,7 +81,7 @@ body {
 }
 
 .bar-row .label {
-  width: 120px;
+  width: 140px;
   flex-shrink: 0;
 }
 
