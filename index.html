@@ -17,15 +17,16 @@
         <div id="loading-overlay">Loading map…</div>
       </div>
       <div id="info-panel">
-        <h2 id="district-name">Select a district</h2>
-
+        <h2 id="select-district">Select a district</h2>
         <div id="rep-info">
           <p id="rep-instructions">
             Click on any district to view its representative and impact.
           </p>
-
-          <div id="rep-details" style="display: none;">
+          <div id="rep-details" style="display: none">
             <div class="rep-header">
+              <span id="district-name"
+                >District Label</span
+              >
               <img id="rep-photo" src="" alt="Representative Photo" />
               <a class="rep-name" href="#" target="_blank">Name (Party)</a>
             </div>
@@ -69,9 +70,12 @@
                 </div>
               </div>
             </div>
-          </div> <!-- end #rep-details -->
-        </div> <!-- end #rep-info -->
-      </div> <!-- end #info-panel -->
+          </div>
+          <!-- end #rep-details -->
+        </div>
+        <!-- end #rep-info -->
+      </div>
+      <!-- end #info-panel -->
     </div>
 
     <script src="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>

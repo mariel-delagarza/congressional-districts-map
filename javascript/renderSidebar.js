@@ -4,15 +4,12 @@ export function renderSidebar(props) {
   const phone = props.PHONE
     ? `${props.PHONE.slice(0, 1)}-${props.PHONE.slice(1)}`
     : "—";
-
   const district =
     props.DISTRICT === "0"
       ? `${props.STATE_FULL}, At-Large`
       : `${props.STATE_FULL}, District ${parseInt(props.DISTRICT, 10)}`;
 
-  document.getElementById("district-name").textContent = `${district}`;
-
-  // Contact links
+  /* -------------------- Contact Links ------------------- */
   const contactLinks = [
     props.PHONE ? `<li>Phone: (202) 22${phone}</li>` : "",
     props.CONTACTFORMURL
@@ -33,7 +30,7 @@ export function renderSidebar(props) {
   ];
   document.getElementById("contact-links").innerHTML = contactLinks.join("");
 
-  // Bar definitions (key = props key, id suffixes match index.html)
+  /* ------------------------ Bars ------------------------ */
   const barDefs = [
     { key: "17 and under", id: "under-17", color: "#60a5fa" },
     { key: "65 and over", id: "over-65", color: "#f472b6" },
@@ -58,7 +55,7 @@ export function renderSidebar(props) {
     }
   });
 
-  // Rep name
+  /* --------------------- Rep Header --------------------- */
   const photo = document.getElementById("rep-photo");
   const repName = document.querySelector(".rep-name");
 
@@ -68,8 +65,9 @@ export function renderSidebar(props) {
   repName.href = props.WEBSITEURL || "#";
   repName.textContent = `${name} (${party})`;
 
-  // Show the sidebar content
+  /* ---- Show sidebar details after click on district ---- */
   document.getElementById("rep-details").style.display = "block";
   document.getElementById("rep-instructions").style.display = "none";
-
+  document.getElementById("select-district").style.display = "none";
+  document.getElementById("district-name").textContent = `${district}`;
 }

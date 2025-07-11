@@ -112,3 +112,38 @@ body {
     height: 100px;
     text-align: center;
 }
+
+.rep-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#rep-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rep-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rep-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280; /* Tailwind gray-500 */
+  font-weight: 500;
+}
+
+.rep-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937; /* Tailwind gray-800 */
+  text-decoration: none;
+}
