@@ -137,3 +137,21 @@ body {
   color: #1f2937; /* Tailwind gray-800-ish */
   text-decoration: none;
 }
+
+.rep-socials {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.rep-socials a {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: #6b7280; /* Tailwind gray-500 */
+  transition: color 0.2s ease;
+}
+
+.rep-socials a:hover {
+  color: #1f2937; /* Tailwind gray-800 */
+}
