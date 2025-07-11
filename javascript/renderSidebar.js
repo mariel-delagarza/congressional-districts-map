@@ -72,17 +72,14 @@ export function renderSidebar(props) {
   ];
 
   barData.forEach(({ label, key, color }) => {
-  const value = parseFloat(props[key]);
-  if (!isNaN(value)) {
-    const { row, value: percent } = createBarRow(label, value, color);
-    container.appendChild(row);
-
-    const barEl = row.querySelector(".bar");
-    const prevWidth = barEl.style.width || "0%";
-    barEl.style.width = prevWidth;
-    void barEl.offsetWidth; // force reflow
-    barEl.style.width = `${percent}%`;
-  }
-});
-
+    const value = parseFloat(props[key]);
+    if (!isNaN(value)) {
+      const { row, value: percent } = createBarRow(label, value, color);
+      container.appendChild(row);
+      // Animate the bar after it's been added to DOM
+      requestAnimationFrame(() => {
+        row.querySelector(".bar").style.width = `${percent}%`;
+      });
+    }
+  });
 }
