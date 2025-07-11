@@ -19,8 +19,9 @@ export function renderSidebar(props) {
       ? `${props.STATE_FULL}, At-Large`
       : `${props.STATE_FULL}, District ${parseInt(props.DISTRICT, 10)}`;
 
-  document.getElementById("total-population").textContent = props["Total population"] + "*" || "—";
-  
+  document.getElementById("total-population").textContent = props["Total population"] || "—";
+  document.getElementById("median-income").textContent = "$" + props["Median Household Income"] || "—";
+
   /* ------------------------ Bars ------------------------ */
   const barDefs = [
     { key: "17 and under", id: "under-17", color: "#60a5fa" },
@@ -28,8 +29,15 @@ export function renderSidebar(props) {
     { key: "White", id: "white", color: "#38bdf8" },
     { key: "Black", id: "black", color: "#f59e0b" },
     { key: "Hispanic", id: "hispanic", color: "#f472b6" },
+    { key: "Foreign-born", id: "foreign", color: "#a78bfa" },
+    { key: "Households making under $50,000", id: "under50", color: "#38bdf8" },
+    { key: "Unemployment Rate", id: "unemployment", color: "#6366f1" },
     { key: "Poverty Rate", id: "poverty", color: "#38bdf8" },
     { key: "Aged 25+ without HS diploma", id: "no-hs", color: "#6366f1" },
+    { key: "18+ with disability", id: "disability", color: "#f59e0b" },
+    { key: "With health insurance", id: "with-health-insurance", color: "#f472b6" },
+    { key: "With public insurance coverage", id: "with-public-insurance", color: "#38bdf8" },
+    { key: "Under 19 without insurance", id: "under-19-without-insurance", color: "#6366f1" },
   ];
 
   barDefs.forEach(({ key, id, color }) => {
