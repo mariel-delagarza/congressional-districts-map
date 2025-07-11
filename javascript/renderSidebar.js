@@ -19,27 +19,6 @@ export function renderSidebar(props) {
       ? `${props.STATE_FULL}, At-Large`
       : `${props.STATE_FULL}, District ${parseInt(props.DISTRICT, 10)}`;
 
-  /* -------------------- Contact Links ------------------- */
-  // const contactLinks = [
-  //   props.PHONE ? `<li>Phone: (202) 22${phone}</li>` : "",
-  //   props.CONTACTFORMURL
-  //     ? `<li><a href="${props.CONTACTFORMURL}" target="_blank">Contact Form</a></li>`
-  //     : "",
-  //   props.FACEBOOK_URL
-  //     ? `<li><a href="${props.FACEBOOK_URL}" target="_blank">Facebook</a></li>`
-  //     : "",
-  //   props.TWITTER_URL
-  //     ? `<li><a href="${props.TWITTER_URL}" target="_blank">Twitter</a></li>`
-  //     : "",
-  //   props.YOUTUBE_URL
-  //     ? `<li><a href="${props.YOUTUBE_URL}" target="_blank">YouTube</a></li>`
-  //     : "",
-  //   props.INSTAGRAM_URL
-  //     ? `<li><a href="${props.INSTAGRAM_URL}" target="_blank">Instagram</a></li>`
-  //     : "",
-  // ];
-  // document.getElementById("contact-links").innerHTML = contactLinks.join("");
-
   /* ------------------------ Bars ------------------------ */
   const barDefs = [
     { key: "17 and under", id: "under-17", color: "#60a5fa" },
@@ -77,7 +56,7 @@ export function renderSidebar(props) {
 
   // Add social icons
   const socialLinks = [
-    { url: props.FACEBOOK_URL, icon: "facebook" },
+    { url: props.FACE_BOOK_URL, icon: "facebook" },
     { url: props.TWITTER_URL, icon: "twitter" },
     { url: props.YOUTUBE_URL, icon: "youtube" },
     { url: props.INSTAGRAM_URL, icon: "instagram" },
