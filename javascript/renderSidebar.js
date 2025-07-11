@@ -44,7 +44,9 @@ export function renderSidebar(props) {
     }
   });
 
-  /* --------------------- Rep Header --------------------- */
+  /* ------------------------------------------------------ */
+  /*                       Rep Header                       */
+  /* ------------------------------------------------------ */
   const photo = document.getElementById("rep-photo");
   const repName = document.querySelector(".rep-name");
 
@@ -54,7 +56,26 @@ export function renderSidebar(props) {
   repName.href = props.WEBSITEURL || "#";
   repName.textContent = `${name} (${party})`;
 
-  // Add social icons
+  /* --------------------- Contact Links ------------------- */
+  // Update official links
+  const website = document.getElementById("rep-website");
+  const contactForm = document.getElementById("rep-contact-form");
+
+  if (props.WEBSITEURL) {
+    website.href = props.WEBSITEURL;
+    website.style.display = "inline";
+  } else {
+    website.style.display = "none";
+  }
+
+  if (props.CONTACTFORMURL) {
+    contactForm.href = props.CONTACTFORMURL;
+    contactForm.style.display = "inline";
+  } else {
+    contactForm.style.display = "none";
+  }
+
+  /* ----------------------- Socials ---------------------- */
   const socialLinks = [
     { url: props.FACE_BOOK_URL, icon: "facebook" },
     { url: props.TWITTER_URL, icon: "twitter" },
