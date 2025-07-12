@@ -215,5 +215,59 @@ map.on("load", () => {
     map.on("mouseleave", "districts-fill", () => {
       map.getCanvas().style.cursor = "";
     });
+
+    /* ------------------------------------------------------ */
+    /*                        Dropdowns                       */
+    /* ------------------------------------------------------ */
+    // ----- Populate dropdowns for mobile -----
+    const stateSelect = document.getElementById("state-select");
+    const districtSelect = document.getElementById("district-select");
+
+    // 1. Get list of states
+    const states = [
+      ...new Set(Object.values(csvById).map((d) => d.STATE_FULL)),
+    ].sort();
+    states.forEach((state) => {
+      const option = document.createElement("option");
+      option.value = state;
+      option.textContent = state;
+      stateSelect.appendChild(option);
+    });
+
+    // 2. When a state is selected, populate the district dropdown
+    stateSelect.addEventListener("change", () => {
+      const selectedState = stateSelect.value;
+      districtSelect.innerHTML = '<option value="">Select a district</option>';
+
+      if (selectedState) {
+        const districts = Object.values(csvById)
+          .filter((d) => d.STATE_FULL === selectedState)
+          .sort((a, b) => parseInt(a.DISTRICT) - parseInt(b.DISTRICT));
+
+        districts.forEach((d) => {
+          const label =
+            d.DISTRICT === "0"
+              ? "At-Large"
+              : `District ${parseInt(d.DISTRICT)}`;
+          const option = document.createElement("option");
+          option.value = d.OBJECTID;
+          option.textContent = label;
+          districtSelect.appendChild(option);
+        });
+
+        districtSelect.disabled = false;
+      } else {
+        districtSelect.disabled = true;
+      }
+    });
+
+    // 3. When a district is selected, render the sidebar
+    districtSelect.addEventListener("change", () => {
+      const objectId = districtSelect.value;
+      const props = csvById[objectId];
+      if (props) {
+        renderSidebar(props);
+      }
+    });
   });
 });

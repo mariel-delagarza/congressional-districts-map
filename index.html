@@ -18,6 +18,21 @@
       </div>
       <div id="info-panel">
         <h2 id="select-district">Select a district</h2>
+        <div id="mobile-controls">
+          <label>
+            State:
+            <select id="state-select">
+              <option value="">Select a state</option>
+            </select>
+          </label>
+
+          <label>
+            District:
+            <select id="district-select" disabled>
+              <option value="">Select a district</option>
+            </select>
+          </label>
+        </div>
         <div id="rep-info">
           <p id="rep-instructions">
             Click on any district to view its representative and demographic
@@ -81,10 +96,7 @@
                 </div>
                 <details>
                   <summary id="race">RACE</summary>
-                  <div
-                    class="bar-row"
-                    id="row-white"
-                  >
+                  <div class="bar-row" id="row-white">
                     <span class="label">White</span>
                     <span class="value" id="value-white"></span>
                     <div class="bar-container">
@@ -124,10 +136,7 @@
                   <summary id="ancestry">
                     ANCESTRY (of total population)
                   </summary>
-                  <div
-                    class="bar-row"
-                    id="row-american"
-                  >
+                  <div class="bar-row" id="row-american">
                     <span class="label">American</span>
                     <span class="value" id="value-american"></span>
                     <div class="bar-container">
