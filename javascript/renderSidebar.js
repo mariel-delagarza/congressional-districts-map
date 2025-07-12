@@ -103,6 +103,10 @@ export function renderSidebar(props) {
   photo.src = props.PHOTOURL || "";
   photo.alt = `Photo of ${name}`;
 
+  if (photo.src === "") {
+    photo.style.display = "none";
+  } 
+
   repName.href = props.WEBSITEURL || "#";
   repName.textContent = `${name} (${party})`;
 
