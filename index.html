@@ -23,26 +23,45 @@
           information.
         </p>
         <div id="mobile-filters">
-          <label for="state-input">State</label>
-          <div class="input-wrapper">
-            <input id="state-input" type="text" placeholder="Type a state" />
-            <span class="clear-btn" id="clear-state">&times;</span>
-          </div>
+          <div class="selects">
+            <div class="selectContainer">
+              <label for="state-input" class="select__label">STATE</label>
+              <div class="select-container">
+                <input
+                  id="state-input"
+                  type="text"
+                  placeholder="Select a state"
+                  class="select__select-tag"
+                />
+                <span class="clear-btn" id="clear-state">&times;</span>
+              </div>
+            </div>
 
-          <label for="district-input">District</label>
-          <div class="input-wrapper">
-            <input
-              id="district-input"
-              type="text"
-              placeholder="Type a district number"
-            />
-            <span class="clear-btn" id="clear-district">&times;</span>
-          </div>
+            <div class="selectContainer">
+              <label for="district-input" class="select__label">DISTRICT</label>
+              <div class="select-container">
+                <input
+                  id="district-input"
+                  type="text"
+                  placeholder="Select a district"
+                  class="select__select-tag"
+                />
+                <span class="clear-btn" id="clear-district">&times;</span>
+              </div>
+            </div>
 
-          <label for="name-input">Name</label>
-          <div class="input-wrapper">
-            <input id="name-input" type="text" placeholder="Type a name" />
-            <span class="clear-btn" id="clear-name">&times;</span>
+            <div class="selectContainer">
+              <label for="name-input" class="select__label">NAME</label>
+              <div class="select-container">
+                <input
+                  id="name-input"
+                  type="text"
+                  placeholder="Select a representative"
+                  class="select__select-tag"
+                />
+                <span class="clear-btn" id="clear-name">&times;</span>
+              </div>
+            </div>
           </div>
 
           <ul id="search-results"></ul>
