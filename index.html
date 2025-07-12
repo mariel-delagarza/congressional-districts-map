@@ -18,6 +18,10 @@
       </div>
       <div id="info-panel">
         <h2 id="select-district">Select a district</h2>
+        <p id="rep-instructions">
+          Click on any district to view its representative and demographic
+          information.
+        </p>
         <div id="mobile-controls">
           <label>
             State:
@@ -32,12 +36,17 @@
               <option value="">Select a district</option>
             </select>
           </label>
+          <div class="rep-name-search">
+            <label for="name-search">Or search by name:</label>
+            <input
+              type="text"
+              id="name-search"
+              placeholder="Start typing a name…"
+            />
+            <ul id="name-suggestions" class="suggestions-list"></ul>
+          </div>
         </div>
         <div id="rep-info">
-          <p id="rep-instructions">
-            Click on any district to view its representative and demographic
-            information.
-          </p>
           <div id="rep-details">
             <div class="rep-header">
               <img id="rep-photo" src="" alt="Representative Photo" />

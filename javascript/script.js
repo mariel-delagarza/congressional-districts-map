@@ -269,5 +269,47 @@ map.on("load", () => {
         renderSidebar(props);
       }
     });
+
+    const nameInput = document.getElementById("name-search");
+    const suggestionsList = document.getElementById("name-suggestions");
+
+    nameInput.addEventListener("input", () => {
+      const query = nameInput.value.trim().toLowerCase();
+      suggestionsList.innerHTML = "";
+
+      if (query.length < 2) return;
+
+      const matches = Object.values(csvById).filter((d) => {
+        return d.fullName.toLowerCase().includes(query);
+      });
+
+      matches.slice(0, 10).forEach((rep) => {
+        const li = document.createElement("li");
+        const last = rep.LASTNAME?.trim() || "";
+        const first = rep.FIRSTNAME?.trim() || "";
+        const districtCode =
+          rep.DISTRICT === "0"
+            ? `${rep.STATE}-AL`
+            : `${rep.STATE}-${parseInt(rep.DISTRICT)}`;
+        li.textContent = `${last}, ${first} (${districtCode})`;
+
+        li.addEventListener("click", () => {
+          renderSidebar(rep);
+          suggestionsList.innerHTML = "";
+          nameInput.value = rep.fullName;
+        });
+        suggestionsList.appendChild(li);
+      });
+    });
+
+    // Hide suggestions on outside click
+    document.addEventListener("click", (e) => {
+      if (
+        !nameInput.contains(e.target) &&
+        !suggestionsList.contains(e.target)
+      ) {
+        suggestionsList.innerHTML = "";
+      }
+    });
   });
 });
