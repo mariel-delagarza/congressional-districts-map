@@ -146,6 +146,35 @@ h4 {
 #row-american {
   padding-top: 0.5rem;
 }
+
+/* ------------------------------------------------------ */
+/*                      Instructions                      */
+/* ------------------------------------------------------ */
+/* Default to visible unless hidden via JS */
+.rep-instructions {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Hide on mobile by default unless shown explicitly */
+.only-mobile {
+  display: none;
+}
+
+.only-desktop {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .only-mobile {
+    display: block;
+  }
+  .only-desktop {
+    display: none;
+  }
+}
+
 /* ------------------------------------------------------ */
 /*                       Rep header                       */
 /* ------------------------------------------------------ */

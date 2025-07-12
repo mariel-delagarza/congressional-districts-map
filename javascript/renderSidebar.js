@@ -19,14 +19,16 @@ export function renderSidebar(props) {
       ? `${props.STATE_FULL}, At-Large`
       : `${props.STATE_FULL}, District ${parseInt(props.DISTRICT, 10)}`;
 
-  document.getElementById("total-population").textContent = props["Total population"] || "—";
-  document.getElementById("median-income").textContent = "$" + props["Median Household Income"] || "—";
+  document.getElementById("total-population").textContent =
+    props["Total population"] || "—";
+  document.getElementById("median-income").textContent =
+    "$" + props["Median Household Income"] || "—";
 
   /* ------------------------ Bars ------------------------ */
 
   const barColor = "#60a5fa"; // Default color for bars
   const barDefs = [
-    { key: "17 and under", id: "under-17"},
+    { key: "17 and under", id: "under-17" },
     { key: "65 and over", id: "over-65" },
     { key: "White", id: "white" },
     { key: "Black", id: "black" },
@@ -147,7 +149,8 @@ export function renderSidebar(props) {
 
   /* ---- Show sidebar details after click on district ---- */
   document.getElementById("rep-details").style.display = "block";
-  document.getElementById("rep-instructions").style.display = "none";
+  document.getElementById("rep-instructions-desktop").style.display = "none";
+  document.getElementById("rep-instructions-mobile").style.display = "none";
   document.getElementById("select-district").style.display = "none";
   document.getElementById("district-name").textContent = `${district}`;
 }
