@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* ------------------------------------------------------ */
+/*                          Base                          */
+/* ------------------------------------------------------ */
 html,
 body {
   margin: 0;
@@ -18,6 +21,20 @@ body {
   background-color: #f0f0f0; /* light background for better contrast */
 }
 
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1f2937; /* Tailwind gray-800-ish */
+}
+h4 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: #1f2937; /* Tailwind gray-800-ish */
+}
+
+/* ------------------------------------------------------ */
+/*                         Sidebar                        */
+/* ------------------------------------------------------ */
 #info-panel {
   width: 550px;
   padding: 1.5rem;
@@ -34,6 +51,9 @@ body {
   margin: 0.5em 0;
 }
 
+/* ------------------------------------------------------ */
+/*                           Map                          */
+/* ------------------------------------------------------ */
 #map-wrapper {
   position: relative;
   flex: 1;
@@ -47,6 +67,9 @@ body {
   left: 0;
 }
 
+/* ------------------------------------------------------ */
+/*                     Loading overlay                    */
+/* ------------------------------------------------------ */
 #loading-overlay {
   position: absolute;
   top: 0;
@@ -68,6 +91,9 @@ body {
   pointer-events: none;
 }
 
+/* ------------------------------------------------------ */
+/*                       Bar charts                       */
+/* ------------------------------------------------------ */
 #demographic-bars {
   margin: 1.125rem 0;
 }
@@ -107,6 +133,24 @@ body {
   border-radius: 0px;
 }
 
+#ancestry, #race {
+  font-size: 1rem;
+  /* text-transform: uppercase; */
+  color: #333; /* Tailwind gray-500-ish */
+  padding-top: 0.5rem;
+  font-weight: 700;
+}
+
+#row-white, #row-american {
+  padding-top: 0.5rem;
+}
+/* ------------------------------------------------------ */
+/*                       Rep header                       */
+/* ------------------------------------------------------ */
+
+#rep-details {
+  display: none; /* hidden by default */
+}
 
 #rep-photo {
   width: 125px;
@@ -135,13 +179,6 @@ body {
   font-weight: 500;
 }
 
-#ancestry, #race {
-  font-size: 1rem;
-  /* text-transform: uppercase; */
-  color: #333; /* Tailwind gray-500-ish */
-  padding-top: 0.5rem;
-  font-weight: 700;
-}
 .rep-name {
   font-size: 1.25rem;
   font-weight: 700;
@@ -182,15 +219,4 @@ body {
 
 .rep-contact-links a:hover {
   text-decoration: underline;
-}
-
-h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #1f2937; /* Tailwind gray-800-ish */
-}
-h4 {
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
-  color: #1f2937; /* Tailwind gray-800-ish */
 }
