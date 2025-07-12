@@ -224,7 +224,7 @@ h4 {
 /* ------------------------------------------------------ */
 /*                        Mobile UI                       */
 /* ------------------------------------------------------ */
-#mobile-controls {
+#mobile-filters {
   display: none;
   flex-direction: column;
   gap: 1rem;
@@ -236,72 +236,42 @@ h4 {
     display: none;
   }
 
-  #mobile-controls {
+  #mobile-filters {
     display: flex;
   }
 }
-
-.suggestions-list {
-  list-style: none;
-  padding: 0;
-  margin: 4px 0 0 0;
-  /* border: 1px solid #ccc; */
-  border-radius: 4px;
-  max-height: 200px;
-  overflow-y: auto;
-  background: white;
-  z-index: 10;
-  position: absolute;
-  width: 100%;
+#mobile-filters {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.suggestions-list li {
-  padding: 8px;
-  cursor: pointer;
-}
-
-.suggestions-list li:hover {
-  background-color: #f0f0f0;
-}
-
-.rep-name-search {
-  position: relative;
-  margin-bottom: 1rem;
-  max-width: 300px;
-}
-
-#name-search {
-  width: 100%;
+#mobile-filters input {
   padding: 0.5rem;
   font-size: 1rem;
 }
 
-.name-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: white;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
+#search-results {
   list-style: none;
   margin: 0;
   padding: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background: white;
+  border-radius: 4px;
+  max-height: 250px;
+  overflow-y: auto;
 }
 
-.name-results li {
-  padding: 0.5rem;
-  cursor: pointer;
+#search-results li {
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
 }
 
-.name-results li:hover {
+#search-results li:last-child {
+  border-bottom: none;
+}
+
+#search-results li:hover {
   background-color: #f0f0f0;
-}
-
-.name-results.hidden {
-  display: none;
 }

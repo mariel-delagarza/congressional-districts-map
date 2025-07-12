@@ -22,30 +22,23 @@
           Click on any district to view its representative and demographic
           information.
         </p>
-        <div id="mobile-controls">
-          <label>
-            State:
-            <select id="state-select">
-              <option value="">Select a state</option>
-            </select>
-          </label>
+        <div id="mobile-filters">
+          <label for="state-input">State</label>
+          <input id="state-input" type="text" placeholder="Type a state" />
 
-          <label>
-            District:
-            <select id="district-select" disabled>
-              <option value="">Select a district</option>
-            </select>
-          </label>
-          <div class="rep-name-search">
-            <label for="name-search">Or search by name:</label>
-            <input
-              type="text"
-              id="name-search"
-              placeholder="Start typing a name…"
-            />
-            <ul id="name-suggestions" class="suggestions-list"></ul>
-          </div>
+          <label for="district-input">District</label>
+          <input
+            id="district-input"
+            type="text"
+            placeholder="Type a district number"
+          />
+
+          <label for="name-input">Name</label>
+          <input id="name-input" type="text" placeholder="Type a name" />
+
+          <ul id="search-results"></ul>
         </div>
+
         <div id="rep-info">
           <div id="rep-details">
             <div class="rep-header">

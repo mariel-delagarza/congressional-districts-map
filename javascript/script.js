@@ -219,71 +219,29 @@ map.on("load", () => {
     /* ------------------------------------------------------ */
     /*                        Dropdowns                       */
     /* ------------------------------------------------------ */
-    // ----- Populate dropdowns for mobile -----
-    const stateSelect = document.getElementById("state-select");
-    const districtSelect = document.getElementById("district-select");
+    const stateInput = document.getElementById("state-input");
+    const districtInput = document.getElementById("district-input");
+    const nameInput = document.getElementById("name-input");
+    const resultsList = document.getElementById("search-results");
 
-    // 1. Get list of states
-    const states = [
-      ...new Set(Object.values(csvById).map((d) => d.STATE_FULL)),
-    ].sort();
-    states.forEach((state) => {
-      const option = document.createElement("option");
-      option.value = state;
-      option.textContent = state;
-      stateSelect.appendChild(option);
-    });
+    function updateResults() {
+      const stateQuery = stateInput.value.trim().toLowerCase();
+      const districtQuery = districtInput.value.trim();
+      const nameQuery = nameInput.value.trim().toLowerCase();
 
-    // 2. When a state is selected, populate the district dropdown
-    stateSelect.addEventListener("change", () => {
-      const selectedState = stateSelect.value;
-      districtSelect.innerHTML = '<option value="">Select a district</option>';
+      const results = Object.values(csvById).filter((d) => {
+        const stateMatch =
+          !stateQuery || d.STATE_FULL?.toLowerCase().includes(stateQuery);
+        const districtMatch = !districtQuery || d.DISTRICT === districtQuery;
+        const nameMatch =
+          !nameQuery || d.fullName?.toLowerCase().includes(nameQuery);
 
-      if (selectedState) {
-        const districts = Object.values(csvById)
-          .filter((d) => d.STATE_FULL === selectedState)
-          .sort((a, b) => parseInt(a.DISTRICT) - parseInt(b.DISTRICT));
-
-        districts.forEach((d) => {
-          const label =
-            d.DISTRICT === "0"
-              ? "At-Large"
-              : `District ${parseInt(d.DISTRICT)}`;
-          const option = document.createElement("option");
-          option.value = d.OBJECTID;
-          option.textContent = label;
-          districtSelect.appendChild(option);
-        });
-
-        districtSelect.disabled = false;
-      } else {
-        districtSelect.disabled = true;
-      }
-    });
-
-    // 3. When a district is selected, render the sidebar
-    districtSelect.addEventListener("change", () => {
-      const objectId = districtSelect.value;
-      const props = csvById[objectId];
-      if (props) {
-        renderSidebar(props);
-      }
-    });
-
-    const nameInput = document.getElementById("name-search");
-    const suggestionsList = document.getElementById("name-suggestions");
-
-    nameInput.addEventListener("input", () => {
-      const query = nameInput.value.trim().toLowerCase();
-      suggestionsList.innerHTML = "";
-
-      if (query.length < 2) return;
-
-      const matches = Object.values(csvById).filter((d) => {
-        return d.fullName.toLowerCase().includes(query);
+        return stateMatch && districtMatch && nameMatch;
       });
 
-      matches.slice(0, 10).forEach((rep) => {
+      resultsList.innerHTML = "";
+
+      results.slice(0, 20).forEach((rep) => {
         const li = document.createElement("li");
         const last = rep.LASTNAME?.trim() || "";
         const first = rep.FIRSTNAME?.trim() || "";
@@ -295,20 +253,30 @@ map.on("load", () => {
 
         li.addEventListener("click", () => {
           renderSidebar(rep);
-          suggestionsList.innerHTML = "";
-          nameInput.value = rep.fullName;
+          resultsList.innerHTML = "";
+          stateInput.value = "";
+          districtInput.value = "";
+          nameInput.value = "";
         });
-        suggestionsList.appendChild(li);
+
+        resultsList.appendChild(li);
       });
+    }
+
+    // Attach listeners
+    [stateInput, districtInput, nameInput].forEach((input) => {
+      input.addEventListener("input", updateResults);
     });
 
-    // Hide suggestions on outside click
+    // Optional: close results on outside click
     document.addEventListener("click", (e) => {
       if (
+        !stateInput.contains(e.target) &&
+        !districtInput.contains(e.target) &&
         !nameInput.contains(e.target) &&
-        !suggestionsList.contains(e.target)
+        !resultsList.contains(e.target)
       ) {
-        suggestionsList.innerHTML = "";
+        resultsList.innerHTML = "";
       }
     });
   });
