@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8" />
     <title>Congressional District Explorer</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.css"
+      rel="stylesheet" />
     <meta property="og:title" content="Congressional District Explorer" />
-    <meta
-      property="og:description"
-      content="Explore U.S. congressional district demographic data and their representatives."
-    />
-    <meta property="og:image" content="https://mariel-delagarza.github.io/congressional-districts-map/preview.jpg" />
-    <meta property="og:url" content="https://mariel-delagarza.github.io/congressional-districts-map/" />
+    <meta property="og:description"
+      content="Explore U.S. congressional district demographic data and their representatives." />
+    <meta property="og:image"
+      content="https://mariel-delagarza.github.io/congressional-districts-map/preview.jpg" />
+    <meta property="og:url"
+      content="https://mariel-delagarza.github.io/congressional-districts-map/" />
     <meta property="og:type" content="website" />
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script async
+    src="https://www.googletagmanager.com/gtag/js?id=G-FK70XTM746"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FK70XTM746');
+  </script>
+
   <body>
     <header id="site-header">
       <h1>Congressional District Explorer</h1>
@@ -45,12 +55,8 @@
             <div class="selectContainer">
               <label for="state-input" class="select__label">STATE</label>
               <div class="select-container">
-                <input
-                  id="state-input"
-                  type="text"
-                  placeholder="Select a state"
-                  class="select__select-tag"
-                />
+                <input id="state-input" type="text" placeholder="Select a state"
+                  class="select__select-tag" />
                 <span class="clear-btn" id="clear-state">&times;</span>
               </div>
             </div>
@@ -58,12 +64,8 @@
             <div class="selectContainer">
               <label for="district-input" class="select__label">DISTRICT</label>
               <div class="select-container">
-                <input
-                  id="district-input"
-                  type="text"
-                  placeholder="Select a district"
-                  class="select__select-tag"
-                />
+                <input id="district-input" type="text"
+                  placeholder="Select a district" class="select__select-tag" />
                 <span class="clear-btn" id="clear-district">&times;</span>
               </div>
             </div>
@@ -71,12 +73,9 @@
             <div class="selectContainer">
               <label for="name-input" class="select__label">NAME</label>
               <div class="select-container">
-                <input
-                  id="name-input"
-                  type="text"
+                <input id="name-input" type="text"
                   placeholder="Select a representative"
-                  class="select__select-tag"
-                />
+                  class="select__select-tag" />
                 <span class="clear-btn" id="clear-name">&times;</span>
               </div>
             </div>
@@ -94,12 +93,10 @@
                 <a class="rep-name" href="#" target="_blank">Name (Party)</a>
 
                 <div class="rep-contact-links">
-                  <a id="rep-website" href="#" target="_blank"
-                    >Official website</a
-                  >
-                  <a id="rep-contact-form" href="#" target="_blank"
-                    >Contact form</a
-                  >
+                  <a id="rep-website" href="#" target="_blank">Official
+                    website</a>
+                  <a id="rep-contact-form" href="#" target="_blank">Contact
+                    form</a>
                 </div>
 
                 <div class="rep-socials"></div>
@@ -442,9 +439,8 @@
                   </div>
                 </div>
                 <div class="bar-row" id="row-with-public-insurance">
-                  <span class="label"
-                    >With <strong>public</strong> insurance</span
-                  >
+                  <span class="label">With <strong>public</strong>
+                    insurance</span>
                   <span class="value" id="value-with-public-insurance"></span>
                   <div class="bar-container">
                     <div class="bar" id="bar-with-public-insurance"></div>
@@ -452,10 +448,8 @@
                 </div>
                 <div class="bar-row" id="row-under-19-without-insurance">
                   <span class="label">Under 19 without insurance</span>
-                  <span
-                    class="value"
-                    id="value-under-19-without-insurance"
-                  ></span>
+                  <span class="value"
+                    id="value-under-19-without-insurance"></span>
                   <div class="bar-container">
                     <div class="bar" id="bar-under-19-without-insurance"></div>
                   </div>
@@ -466,9 +460,9 @@
                 <summary>Get the demographic data</summary>
                 <p>
                   The complete data can be found at the Census Bureau's website
-                  <a href="https://www.census.gov/mycd/"
-                    >"My Congressional District"</a
-                  >. If you click on a state and a district, you will see the
+                  <a href="https://www.census.gov/mycd/">"My Congressional
+                    District"</a>. If you click on a state and a district, you
+                  will see the
                   complete information for that district. At the bottom, you
                   will see a share icon and the text "Download and Share".
                   Clicking on this provides the option to download the
@@ -483,27 +477,17 @@
                   information about each representative comes from the U.S.
                   Department of Transportation, Bureau of Transportation
                   Statistics
-                  <a
-                    href="https://geodata.bts.gov/datasets/usdot::congressional-districts/about"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >and can be downloaded here.</a
-                  >
+                  <a href="https://geodata.bts.gov/datasets/usdot::congressional-districts/about"
+                    target="_blank" rel="noopener noreferrer">and can be
+                    downloaded here.</a>
                 </p>
                 <p>
                   The map was built using
-                  <a
-                    href="https://maplibre.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >MapLibre</a
-                  >, and a basemap style from
-                  <a
-                    href="https://docs.carto.com/faqs/carto-basemaps"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >CARTO</a
-                  >.
+                  <a href="https://maplibre.org/" target="_blank"
+                    rel="noopener noreferrer">MapLibre</a>, and a basemap style
+                  from
+                  <a href="https://docs.carto.com/faqs/carto-basemaps"
+                    target="_blank" rel="noopener noreferrer">CARTO</a>.
                 </p>
               </details>
               <details>
@@ -523,12 +507,9 @@
                   "Asian" is categorized in the data as a race. Though ancestry
                   data includes many European countries, there is no breakdown
                   for "Asian" populations beyond the inclusion of Russia.
-                  <a
-                    href="https://en.wikipedia.org/wiki/Asia#List_of_states_and_territories"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Over 40 different countries are part of Asia.</a
-                  >
+                  <a href="https://en.wikipedia.org/wiki/Asia#List_of_states_and_territories"
+                    target="_blank" rel="noopener noreferrer">Over 40 different
+                    countries are part of Asia.</a>
                 </p>
               </details>
               <details>
@@ -543,20 +524,16 @@
                 </p>
                 <ul>
                   <li>
-                    <strong
-                      >Total Civilian Noninstitutionalized Population:</strong
-                    >
+                    <strong>Total Civilian Noninstitutionalized
+                      Population:</strong>
                     <p>
                       The civilian noninstutitional population is defined as,
                       "People ages 15 or 16 and older residing in the 50 states
                       and the District of columbia who do not live in
                       institutions and who are not on Active Duty in the Armed
-                      Forces." (<a
-                        href="https://www.bls.gov/bls/glossary.htm#C"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >BLS glossary</a
-                      >)
+                      Forces." (<a href="https://www.bls.gov/bls/glossary.htm#C"
+                        target="_blank" rel="noopener noreferrer">BLS
+                        glossary</a>)
                     </p>
                     <p>
                       Institutions include "adult correctional facilities,
@@ -564,10 +541,8 @@
                       institutional facilities such as mental (psychiatric)
                       hospitals and in-patient hospice facilities." (<a
                         href="https://www.census.gov/glossary/?term=Institutionalized+population"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Census Bureau Glossary</a
-                      >)
+                        target="_blank" rel="noopener noreferrer">Census Bureau
+                        Glossary</a>)
                     </p>
                     <p>
                       This number is used to calculate the percentage of people
@@ -583,10 +558,8 @@
                       occupy a housing unit (such as a house or apartment) as
                       their usual place of residence". (<a
                         href="https://www.census.gov/glossary/?term=Household"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Census Bureau Glossary</a
-                      >)
+                        target="_blank" rel="noopener noreferrer">Census Bureau
+                        Glossary</a>)
                     </p>
                   </li>
                   <li>
@@ -616,9 +589,11 @@
       </div>
     </div>
 
-    <script src="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>
+    <script
+      src="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script type="module" src="javascript/script.js"></script>
     <script src="https://unpkg.com/topojson-client@3"></script>
   </body>
+
 </html>
