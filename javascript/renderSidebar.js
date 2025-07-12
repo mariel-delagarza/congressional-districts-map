@@ -147,6 +147,19 @@ export function renderSidebar(props) {
     }
   });
 
+  const infoPanel = document.getElementById("info-panel");
+  const header = document.getElementById("site-header");
+
+  infoPanel.addEventListener("scroll", () => {
+    if (window.innerWidth < 700) {
+      if (infoPanel.scrollTop > 10) {
+        header.classList.add("shrink");
+      } else {
+        header.classList.remove("shrink");
+      }
+    }
+  });
+
   /* ---- Show sidebar details after click on district ---- */
   document.getElementById("rep-details").style.display = "block";
   document.getElementById("rep-instructions-desktop").style.display = "none";

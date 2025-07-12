@@ -11,6 +11,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   color: #333;
+  overscroll-behavior: none;
 }
 
 #container {
@@ -30,6 +31,34 @@ h4 {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
   color: #1f2937; /* Tailwind gray-800-ish */
+}
+
+/* ------------------------------------------------------ */
+/*                       Page header                      */
+/* ------------------------------------------------------ */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #023e8a;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  transition: font-size 0.3s ease, padding 0.3s ease;
+}
+
+#site-header h1 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Only apply on mobile */
+@media (min-width: 700px) {
+  #site-header {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
 }
 
 /* ------------------------------------------------------ */
@@ -308,7 +337,7 @@ h4 {
 }
 
 .select-container {
-  border-bottom: 2px solid #981E13;
+  border-bottom: 2px solid #981e13;
   position: relative;
   display: flex;
   align-items: center;
@@ -331,7 +360,7 @@ h4 {
 .select__label {
   font-weight: bold;
   font-size: 1rem;
-  color: #981E13;
+  color: #981e13;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 6px;
