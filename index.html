@@ -2,13 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Congressional Districts Map</title>
+    <title>Congressional District Explorer</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.css"
       rel="stylesheet"
     />
+    <meta property="og:title" content="Congressional District Explorer" />
+    <meta
+      property="og:description"
+      content="Explore U.S. congressional district demographic data and their representatives."
+    />
+    <meta property="og:image" content="https://mariel-delagarza.github.io/congressional-districts-map/preview.jpg" />
+    <meta property="og:url" content="https://mariel-delagarza.github.io/congressional-districts-map/" />
+    <meta property="og:type" content="website" />
   </head>
   <body>
     <header id="site-header">
@@ -470,8 +478,33 @@
               </details>
               <details>
                 <summary>Get the geographic and member data</summary>
-                <p>The dataset used for the congressional district boundaries and information about each representative comes from the U.S. Department of Transportation, Bureau of Transportation Statistics <a href="https://geodata.bts.gov/datasets/usdot::congressional-districts/about" target="_blank" rel="noopener noreferrer">and can be downloaded here.</a></p>
-                <p>The map was built using <a href="https://maplibre.org/" target="_blank" rel="noopener noreferrer">MapLibre</a>, and a basemap style from <a href="https://docs.carto.com/faqs/carto-basemaps" target="_blank" rel="noopener noreferrer">CARTO</a>.</p>
+                <p>
+                  The dataset used for the congressional district boundaries and
+                  information about each representative comes from the U.S.
+                  Department of Transportation, Bureau of Transportation
+                  Statistics
+                  <a
+                    href="https://geodata.bts.gov/datasets/usdot::congressional-districts/about"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >and can be downloaded here.</a
+                  >
+                </p>
+                <p>
+                  The map was built using
+                  <a
+                    href="https://maplibre.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >MapLibre</a
+                  >, and a basemap style from
+                  <a
+                    href="https://docs.carto.com/faqs/carto-basemaps"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >CARTO</a
+                  >.
+                </p>
               </details>
               <details>
                 <summary>Race and Ancestry</summary>
@@ -491,7 +524,9 @@
                   data includes many European countries, there is no breakdown
                   for "Asian" populations beyond the inclusion of Russia.
                   <a
-                    href="https://en.wikipedia.org/wiki/Asia#List_of_states_and_territories" target="_blank" rel="noopener noreferrer"
+                    href="https://en.wikipedia.org/wiki/Asia#List_of_states_and_territories"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     >Over 40 different countries are part of Asia.</a
                   >
                 </p>
@@ -516,7 +551,10 @@
                       "People ages 15 or 16 and older residing in the 50 states
                       and the District of columbia who do not live in
                       institutions and who are not on Active Duty in the Armed
-                      Forces." (<a href="https://www.bls.gov/bls/glossary.htm#C" target="_blank" rel="noopener noreferrer"
+                      Forces." (<a
+                        href="https://www.bls.gov/bls/glossary.htm#C"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         >BLS glossary</a
                       >)
                     </p>
@@ -525,7 +563,9 @@
                       juvenile facilities, skilled-nursing facilities, and other
                       institutional facilities such as mental (psychiatric)
                       hospitals and in-patient hospice facilities." (<a
-                        href="https://www.census.gov/glossary/?term=Institutionalized+population" target="_blank" rel="noopener noreferrer"
+                        href="https://www.census.gov/glossary/?term=Institutionalized+population"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         >Census Bureau Glossary</a
                       >)
                     </p>
@@ -542,7 +582,9 @@
                       levels. A "household" is defined as "all the people who
                       occupy a housing unit (such as a house or apartment) as
                       their usual place of residence". (<a
-                        href="https://www.census.gov/glossary/?term=Household" target="_blank" rel="noopener noreferrer"
+                        href="https://www.census.gov/glossary/?term=Household"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         >Census Bureau Glossary</a
                       >)
                     </p>
