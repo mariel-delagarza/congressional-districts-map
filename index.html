@@ -71,41 +71,6 @@
                     <div class="bar" id="bar-disability"></div>
                   </div>
                 </div>
-                <div class="bar-row" id="row-white">
-                  <span class="label">White</span>
-                  <span class="value" id="value-white"></span>
-                  <div class="bar-container">
-                    <div class="bar" id="bar-white"></div>
-                  </div>
-                </div>
-                <div class="bar-row" id="row-black">
-                  <span class="label">Black</span>
-                  <span class="value" id="value-black"></span>
-                  <div class="bar-container">
-                    <div class="bar" id="bar-black"></div>
-                  </div>
-                </div>
-                <div class="bar-row" id="row-indigenous">
-                  <span class="label">Indigenous (total)</span>
-                  <span class="value" id="value-indigenous"></span>
-                  <div class="bar-container">
-                    <div class="bar" id="bar-indigenous"></div>
-                  </div>
-                </div>
-                <div class="bar-row" id="row-asian">
-                  <span class="label">Asian</span>
-                  <span class="value" id="value-asian"></span>
-                  <div class="bar-container">
-                    <div class="bar" id="bar-asian"></div>
-                  </div>
-                </div>
-                <div class="bar-row" id="row-hispanic">
-                  <span class="label">Hispanic (any race)</span>
-                  <span class="value" id="value-hispanic"></span>
-                  <div class="bar-container">
-                    <div class="bar" id="bar-hispanic"></div>
-                  </div>
-                </div>
                 <h4>Where are they from?</h4>
                 <div class="bar-row" id="row-foreign">
                   <span class="label">Foreign-born</span>
@@ -114,6 +79,48 @@
                     <div class="bar" id="bar-foreign"></div>
                   </div>
                 </div>
+                <details>
+                  <summary id="race">RACE</summary>
+                  <div
+                    class="bar-row"
+                    id="row-white"
+                    style="padding-top: 0.5rem"
+                  >
+                    <span class="label">White</span>
+                    <span class="value" id="value-white"></span>
+                    <div class="bar-container">
+                      <div class="bar" id="bar-white"></div>
+                    </div>
+                  </div>
+                  <div class="bar-row" id="row-black">
+                    <span class="label">Black</span>
+                    <span class="value" id="value-black"></span>
+                    <div class="bar-container">
+                      <div class="bar" id="bar-black"></div>
+                    </div>
+                  </div>
+                  <div class="bar-row" id="row-indigenous">
+                    <span class="label">Indigenous (total)</span>
+                    <span class="value" id="value-indigenous"></span>
+                    <div class="bar-container">
+                      <div class="bar" id="bar-indigenous"></div>
+                    </div>
+                  </div>
+                  <div class="bar-row" id="row-asian">
+                    <span class="label">Asian</span>
+                    <span class="value" id="value-asian"></span>
+                    <div class="bar-container">
+                      <div class="bar" id="bar-asian"></div>
+                    </div>
+                  </div>
+                  <div class="bar-row" id="row-hispanic">
+                    <span class="label">Hispanic (any race)</span>
+                    <span class="value" id="value-hispanic"></span>
+                    <div class="bar-container">
+                      <div class="bar" id="bar-hispanic"></div>
+                    </div>
+                  </div>
+                </details>
                 <details>
                   <summary id="ancestry">
                     ANCESTRY (of total population)
@@ -380,7 +387,9 @@
                   </div>
                 </div>
                 <div class="bar-row" id="row-with-public-insurance">
-                  <span class="label">With <strong>public</strong> insurance</span>
+                  <span class="label"
+                    >With <strong>public</strong> insurance</span
+                  >
                   <span class="value" id="value-with-public-insurance"></span>
                   <div class="bar-container">
                     <div class="bar" id="bar-with-public-insurance"></div>

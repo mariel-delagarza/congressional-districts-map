@@ -135,7 +135,7 @@ body {
   font-weight: 500;
 }
 
-#ancestry {
+#ancestry, #race {
   font-size: 1rem;
   /* text-transform: uppercase; */
   color: #333; /* Tailwind gray-500-ish */
