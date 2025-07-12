@@ -24,17 +24,26 @@
         </p>
         <div id="mobile-filters">
           <label for="state-input">State</label>
-          <input id="state-input" type="text" placeholder="Type a state" />
+          <div class="input-wrapper">
+            <input id="state-input" type="text" placeholder="Type a state" />
+            <span class="clear-btn" id="clear-state">&times;</span>
+          </div>
 
           <label for="district-input">District</label>
-          <input
-            id="district-input"
-            type="text"
-            placeholder="Type a district number"
-          />
+          <div class="input-wrapper">
+            <input
+              id="district-input"
+              type="text"
+              placeholder="Type a district number"
+            />
+            <span class="clear-btn" id="clear-district">&times;</span>
+          </div>
 
           <label for="name-input">Name</label>
-          <input id="name-input" type="text" placeholder="Type a name" />
+          <div class="input-wrapper">
+            <input id="name-input" type="text" placeholder="Type a name" />
+            <span class="clear-btn" id="clear-name">&times;</span>
+          </div>
 
           <ul id="search-results"></ul>
         </div>

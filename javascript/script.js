@@ -279,5 +279,21 @@ map.on("load", () => {
         resultsList.innerHTML = "";
       }
     });
+
+    // Clear buttons
+    document.getElementById("clear-state").addEventListener("click", () => {
+      stateInput.value = "";
+      updateResults();
+    });
+
+    document.getElementById("clear-district").addEventListener("click", () => {
+      districtInput.value = "";
+      updateResults();
+    });
+
+    document.getElementById("clear-name").addEventListener("click", () => {
+      nameInput.value = "";
+      updateResults();
+    });
   });
 });
