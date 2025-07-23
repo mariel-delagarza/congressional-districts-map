@@ -163,7 +163,9 @@ h4 {
 }
 
 #ancestry,
-#race {
+#race,
+#hispanic, 
+#place-of-birth {
   font-size: 1rem;
   /* text-transform: uppercase; */
   color: #333; /* Tailwind gray-500-ish */

@@ -24,21 +24,33 @@ export function renderSidebar(props) {
   document.getElementById("median-income").textContent =
     "$" + props["Median Household Income"] || "—";
 
+  document.getElementById("median-home-value").textContent =
+    "$" + props["Median home value (dollars)"] || "—";
+  document.getElementById("with-mortgage").textContent =
+    "$" + props["Housing units with a mortgage Median (dollars)"] || "—";
+  document.getElementById("without-mortgage").textContent =
+    "$" + props["Housing units without a mortgage Median (dollars)"] || "—";
+  document.getElementById("median-rent").textContent =
+    "$" + props["Median rent (dollars)"] || "—";
+
   /* ------------------------ Bars ------------------------ */
 
   const barColor = "#60a5fa"; // Default color for bars
   const barDefs = [
-    { key: "17 and under", id: "under-17" },
+    { key: "Under 18 years", id: "under-18" },
     { key: "65 and over", id: "over-65" },
     { key: "White", id: "white" },
     { key: "Black", id: "black" },
     { key: "Hispanic", id: "hispanic" },
     { key: "Indigenous (total)", id: "indigenous" },
     { key: "Asian", id: "asian" },
-    { key: "Foreign-born", id: "foreign" },
+    { key: "Some other race", id: "some-other-race" },
+    { key: "Cuban", id: "cuban" },
+    { key: "Mexican", id: "mexican" },
+    { key: "Puerto Rican", id: "puerto-rican" },
+    { key: "Other Hispanic or Latino", id: "other-hispanic-latino" },
     { key: "American", id: "american" },
     { key: "Arab", id: "arab" },
-    { key: "Cuban", id: "cuban" },
     { key: "Czech", id: "czech" },
     { key: "Danish", id: "danish" },
     { key: "Dutch", id: "dutch" },
@@ -51,11 +63,9 @@ export function renderSidebar(props) {
     { key: "Irish", id: "irish" },
     { key: "Italian", id: "italian" },
     { key: "Lithuanian", id: "lithuanian" },
-    { key: "Mexican", id: "mexican" },
     { key: "Norwegian", id: "norwegian" },
     { key: "Polish", id: "polish" },
     { key: "Portuguese", id: "portuguese" },
-    { key: "Puerto Rican", id: "puerto-rican" },
     { key: "Russian", id: "russian" },
     { key: "Scotch-Irish", id: "scotch-irish" },
     { key: "Scottish", id: "scottish" },
@@ -66,15 +76,59 @@ export function renderSidebar(props) {
     { key: "Ukrainian", id: "ukrainian" },
     { key: "Welsh", id: "welsh" },
     { key: "West Indian", id: "west-indian" },
-    { key: "Other Hispanic or Latino", id: "other-hispanic" },
-    { key: "Households making under $50,000", id: "under50" },
+    { key: "Foreign-born", id: "foreign-born" },
+    { key: "Native", id: "native" },
+    { key: "Under 18 With a disability", id: "disabled-under-18" },
+    { key: "18 to 64 With a disability", id: "disabled-18-64" },
+    { key: "65 and over With a disability", id: "disabled-65-and-over" },
+    { key: "Private wage and salary workers", id: "private-wage" },
+    { key: "Government workers", id: "government-workers" },
+    { key: "Self-employed", id: "self-employed" },
+    { key: "Unpaid family workers", id: "unpaid-family" },
+    {
+      key: "Agriculture, forestry, fishing and hunting, and mining",
+      id: "agriculture",
+    },
+    { key: "Construction", id: "construction" },
+    { key: "Manufacturing", id: "manufacturing" },
+    { key: "Wholesale trade", id: "wholesale-trade" },
+    { key: "Retail trade", id: "retail-trade" },
+    {
+      key: "Transportation and warehousing, and utilities",
+      id: "transportation",
+    },
+    { key: "Information", id: "information" },
+    {
+      key: "Finance and insurance, and real estate and rental and leasing",
+      id: "finance",
+    },
+    {
+      key: "Professional, scientific, and management, and administrative and waste management services",
+      id: "professional-scientific",
+    },
+    {
+      key: "Educational services, and health care and social assistance",
+      id: "educational-health",
+    },
+    {
+      key: "Arts, entertainment, and recreation, and accommodation and food services",
+      id: "arts-entertainment",
+    },
+    {
+      key: "Other services, except public administration",
+      id: "other-services",
+    },
+    { key: "Public administration", id: "public-administration" },
+    { key: "Households making under $50,000", id: "under-50k" },
+    { key: "Poverty Rate", id: "poverty-rate" },
     { key: "Unemployment Rate", id: "unemployment" },
-    { key: "Poverty Rate", id: "poverty" },
-    { key: "Aged 25+ without HS diploma", id: "no-hs" },
-    { key: "18+ with disability", id: "disability" },
-    { key: "With health insurance", id: "with-health-insurance" },
+    { key: "Without health insurance", id: "without-health-insurance" },
+    { key: "Under 19 without insurance", id: "under-19-without-health-insurance" },
+    { key: "With private insurance", id: "with-private-insurance" },
     { key: "With public insurance coverage", id: "with-public-insurance" },
-    { key: "Under 19 without insurance", id: "under-19-without-insurance" },
+    { key: "No HS Diploma", id: "no-hs-diploma" },
+    { key: "Percent high school graduate or higher", id: "hs-or-higher" },
+    { key: "Percent bachelor's degree or higher", id: "bachelors-degree" }, 
   ];
 
   barDefs.forEach(({ key, id }) => {
@@ -105,7 +159,7 @@ export function renderSidebar(props) {
 
   if (photo.src === "") {
     photo.style.display = "none";
-  } 
+  }
 
   repName.href = props.WEBSITEURL || "#";
   repName.textContent = `${name} (${party})`;
